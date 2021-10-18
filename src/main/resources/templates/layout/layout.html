@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html
+    lang="es"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    >
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    </head>
+    <body>
+        <!-- nabvar -->
+        <nav class="navbar navbar-expand-sm navbar-dark bg-gradient bg-dark">
+            <div class="container-fluid">
+                <a th:href="@{/home}" class="navbar-brand ml-1" style="display: inline-flex;" >
+                    <img alt="logo" th:src="@{/img/logo.png}" 
+                         class="d-flex mx-auto"
+                         height="50"
+                         />
+                    <span class="nav-link active text-responsive text-light">
+                        Sistema de Punto de Venta
+                    </span>
+
+                </a>
+                <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#miBarra"
+                        aria-controls="miBarra" aria-expanded="false"
+                        aria-label="Toggle navigation"
+                        >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div id="miBarra" class="collapse navbar-collapse justify-content-md-center">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-link ml-4">  
+                            <a th:href="@{/ventas/listado}" class="nav-link active" aria-current="page">
+                                <i class="fas fa-money-check-alt"></i>
+                                <span>Ventas</span>
+                            </a>
+                        </li>
+                        <li class="nav-link ml-4">
+                            <a th:href="@{/productos/listado}" class="nav-link " aria-current="page">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Productos</span>
+                            </a>
+                        </li>
+                        <li class="nav-link ml-4">  
+                            <a th:href="@{/clientes/listado}" class="nav-link " aria-current="page">
+                                <i class="fas fa-users"></i>
+                                <span>Clientes</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="contenido" layout:fragment="contenido">
+            <p>Contenido principal de las paginas</p>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    </body>
+</html>
