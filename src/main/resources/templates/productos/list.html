@@ -17,31 +17,46 @@ and open the template in the editor.
                 </head>
                 <body>
                     <div layout:fragment="contenido">
-                        <p>Listado de Productos</p>
 
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Imagen</th>
-                                    <th>Cod. Barras</th>
-                                    <th>Producto</th>
-                                    <th>Precio</th>
-                                    <th>Existencias</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr th:each="p : ${productos}">
-                                    <td th:text="${p.id}"></td>
-                                    <td th:text="${p.linkImagen}"></td>
-                                    <td th:text="${p.codigoBarras}"></td>
-                                    <td th:text="${p.descripcion}"></td>
-                                    <td th:text="${p.precio}"></td>
-                                    <td th:text="${p.stock}"></td>
-                                </tr>
-                            </tbody>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card m-4">
+                                    <div class="card-header">
+                                        <h5 class="card-title text-primary">Listado de Productos</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped table-hover table-bordered table-sm" style="width: 100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th style="width: 10px;">Imagen</th>
+                                                    <th>Cod. Barras</th>
+                                                    <th>Producto</th>
+                                                    <th>Precio</th>
+                                                    <th>Existencias</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr th:each="p : ${productos}">
+                                                    <td th:text="${p.id}"></td>
+                                                    <td th:text="${p.linkImagen}"></td>
+                                                    <td th:text="${p.codigoBarras}"></td>
+                                                    <td th:text="${p.descripcion}"></td>
+                                                    <td th:text="${p.precio}"></td>
+                                                    <td th:text="${p.stock}"></td>
+                                                </tr>
+                                            </tbody>
 
-                        </table>
+                                        </table>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="button" class="btn btn-primary float-end">
+                                            Nuevo Producto
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </body>
                 </html>
