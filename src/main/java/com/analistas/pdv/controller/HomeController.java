@@ -10,15 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  *
- * @author pcc
+ * @author ander
  */
+
 @Controller
 public class HomeController {
-
+    
     @GetMapping({"/", "/home"})
     public String home() {
-
         return "home";
     }
-
 }

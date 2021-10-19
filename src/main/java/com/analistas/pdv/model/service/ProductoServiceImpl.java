@@ -14,20 +14,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @author pcc
+ * @author ander
  */
-
 @Service
 public class ProductoServiceImpl implements IProductoService {
     
-    //forma tradicional es:
-    //IProductoRepository ProductoRepo = new IProductoRepository(); No se usara
-
+    //Forma tradicional es:
+    //IProductoRepository productoRepo = new IProductoRepository(); NO SE USARá
+    
     //DI (Dependence Injection) (IoC)
-    //Recordar el principio de Hollywood
+    //Recordar el principio de Hollywood (no me llames...yo te llamaré)
     @Autowired
     IProductoRepository productoRepo;
-    
+
     @Override
     @Transactional(readOnly = true)
     public List<Producto> buscarTodos() {
@@ -45,8 +44,9 @@ public class ProductoServiceImpl implements IProductoService {
     }
 
     @Override
+    @Transactional(readOnly = false)
     public void guardar(Producto producto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        productoRepo.save(producto);
     }
 
     @Override

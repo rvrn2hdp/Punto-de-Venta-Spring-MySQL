@@ -23,16 +23,19 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
-@Entity
-@Table(name = "ventas")
+/**
+ *
+ * @author ander
+ */
+@Entity   //Convertimos nuestra clase en una "CLASE DE ENTIDAD"
+@Table(name="ventas")
 public class Venta {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotNull(message = "la fecha y hora es requerida...")
+    @NotNull(message = "La fecha y hora es requerida...")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm z")
     @Column(name = "fecha_hora")
     private LocalDateTime fechaHora;
@@ -40,15 +43,15 @@ public class Venta {
     @Size(max=65)
     private String descripcion;
     
-    @ManyToOne(fetch = FetchType.LAZY) //investigar mejor...
-    @JoinColumn(name = "id_cliente") //clave Foranea
+    @ManyToOne(fetch = FetchType.LAZY)  //Investigar mejor...
+    @JoinColumn(name= "id_cliente")  //Clave foranea
     private Cliente cliente;
     
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, 
             orphanRemoval = true)
-    @JoinColumn(name = "id_venta")
+    @JoinColumn(name="id_venta")
     private List<LineaVenta> lineas;
-    
+
     public Venta() {
         lineas = new ArrayList<>();
         descripcion = "NINGUNA";
@@ -94,18 +97,19 @@ public class Venta {
     public void setLineas(List<LineaVenta> lineas) {
         this.lineas = lineas;
     }
-    
+
     public void addLineaVenta(LineaVenta linea) {
         lineas.add(linea);
     }
-    
+
     public Double getTotal() {
         Double total = 0.0;
-        
-        for(LineaVenta ln : lineas) {
+
+        for (LineaVenta ln : lineas) {
             total += ln.getSubtotal();
         }
-        
+
         return total;
     }
+
 }

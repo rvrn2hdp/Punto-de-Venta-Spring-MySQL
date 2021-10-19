@@ -5,12 +5,12 @@
  */
 package com.analistas.pdv.model.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.analistas.pdv.model.entities.Producto;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
- * @author pcc
+ * @author ander
  */
 public interface IProductoRepository extends JpaRepository<Producto, Long> {
     

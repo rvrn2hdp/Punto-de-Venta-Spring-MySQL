@@ -17,10 +17,11 @@ import javax.validation.constraints.Min;
 
 /**
  *
- * @author pcc
+ * @author ander
  */
-@Entity //Convertimos nuestra clase en una "clase de entidad"
-@Table(name="linea_ventas")
+
+@Entity   //Convertimos nuestra clase en una "CLASE DE ENTIDAD"
+@Table(name="lineas_ventas")
 public class LineaVenta {
     
     @Id
@@ -33,8 +34,7 @@ public class LineaVenta {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_articulo")
     private Producto producto;
-    
-    
+
     public Long getId() {
         return id;
     }

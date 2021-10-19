@@ -8,7 +8,10 @@ package com.analistas.pdv.model.service;
 import com.analistas.pdv.model.entities.Producto;
 import java.util.List;
 
-
+/**
+ *
+ * @author ander
+ */
 public interface IProductoService {
     
     public List<Producto> buscarTodos();

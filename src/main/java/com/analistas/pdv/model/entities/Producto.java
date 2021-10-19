@@ -12,29 +12,33 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.springframework.format.annotation.NumberFormat;
 
-@Entity //Convertimos nuestra clase en una "CLASE DE ENTIDAD"
-@Table(name ="productos")
+/**
+ *
+ * @author ander
+ */
+@Entity   //Convertimos nuestra clase en una "CLASE DE ENTIDAD"
+@Table(name="productos")
 public class Producto {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name = "cod_bar", length = 13)  //Varchar (13)
+    @Column(name = "cod_bar", length = 13)  //varchar(13)
     private String codigoBarras;
     
-    @NotBlank(message = "La descripcion es requerida...") //not null
-    @Size(max = 65) //varchar(65)
+    @NotBlank(message = "La descripción es requerida...")  //Not null
+    @Size(max=65)  //varchar(65)
     private String descripcion;
     
     @NotNull(message = "El precio es requerido...")
     @NumberFormat(pattern = "#,##0.00", style = NumberFormat.Style.CURRENCY)
     private BigDecimal precio;
     
-    @NotNull(message = "El stock es requerido.")
+    @NotNull(message = "El stock es requerido")
     private int stock;
     
-    @Column(name = "url_img")
+    @Column(name="url_img")
     private String linkImagen;
     
     @Column(name = "act", columnDefinition = "bit default 1")
@@ -103,5 +107,5 @@ public class Producto {
     public String toString() {
         return id + " - " + descripcion + " - " + precio;
     }
-    
+
 }

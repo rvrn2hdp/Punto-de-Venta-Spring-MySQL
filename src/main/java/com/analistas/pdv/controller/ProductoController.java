@@ -14,21 +14,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
- * @author pcc
+ * @author ander
  */
 @Controller
 @RequestMapping("/productos")
 public class ProductoController {
-
+    
     @Autowired
     IProductoService productoService;
     
     @GetMapping("/listado")
     public String listarProductos(Model model) {
-        
+    
         model.addAttribute("productos", productoService.buscarTodos());
-
+        
         return "productos/list";
     }
-
 }

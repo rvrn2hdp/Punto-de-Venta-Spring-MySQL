@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  * @author pcc
  */
+
 @Controller
 @RequestMapping("/ventas")
 public class VentaController {
-
+    
     @GetMapping("/listado")
     public String listarVentas() {
-
+    
         return "ventas/list";
     }
-
 }
