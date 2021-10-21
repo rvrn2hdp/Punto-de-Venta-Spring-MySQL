@@ -16,7 +16,7 @@ public interface IProductoService {
     
     public List<Producto> buscarTodos();
     
-    public Producto buscarPor(String criterio);
+    public List<Producto> buscarPor(String criterio);
     
     public Producto buscarPorId(Long id);
     

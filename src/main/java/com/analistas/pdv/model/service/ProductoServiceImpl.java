@@ -18,10 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 public class ProductoServiceImpl implements IProductoService {
-    
+
     //Forma tradicional es:
     //IProductoRepository productoRepo = new IProductoRepository(); NO SE USARá
-    
     //DI (Dependence Injection) (IoC)
     //Recordar el principio de Hollywood (no me llames...yo te llamaré)
     @Autowired
@@ -34,13 +33,15 @@ public class ProductoServiceImpl implements IProductoService {
     }
 
     @Override
-    public Producto buscarPor(String criterio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Transactional(readOnly = true)
+    public List<Producto> buscarPor(String criterio) {
+        return productoRepo.buscarPorCriterio(criterio);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Producto buscarPorId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return productoRepo.findById(id).orElse(null);
     }
 
     @Override
@@ -50,8 +51,9 @@ public class ProductoServiceImpl implements IProductoService {
     }
 
     @Override
+    @Transactional
     public void borrarPorId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        productoRepo.deleteById(id);
     }
-    
+
 }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/layout}">
+    <head>
+        <title th:text="#{titulo}">TODO supply a title</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div layout:fragment="contenido">
+            <div class="container-fluid mt-4 px-4 mb-4">
+                <div class="card">
+                    <form th:action="@{/productos/guardar}" method="post" th:object="${producto}">
+                        <div class="card-header">
+                            <h4 th:text="${subtitulo}" ></h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row row-cols-1 mb-2">
+                                <div class="col col-sm-6">
+                                    <div class="form">
+                                        <label for="cod_barra" class="form-label">Codigo Barra</label>
+                                        <input id="cod_barra" type="text" class="form-control" th:field="*{codigoBarras}"/>
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form">
+                                            <label for="des" class="form-label">Descripcion</label>
+                                            <input id="des" type="text" class="form-control" th:field="*{descripcion}" />
+                                        </div>
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form">
+                                            <label for="precio" class="form-label">Precio</label>
+                                            <input id="precio" type="text" class="form-control" th:field="*{precio}" />
+                                        </div>
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form">
+                                            <label for="stock" class="form-label">Stock</label>
+                                            <input id="stock" type="text" class="form-control" th:field="*{stock}" />
+                                        </div>
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form">
+                                            <label for="linkimg" class="form-label">Imagen</label>
+                                            <input id="linkimg" type="url" class="form-control" th:field="*{linkImagen}" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                        <button type="submit" class="btn btn-outline-primary float-end ms-2">
+                            Guardar
+                        </button>
+                        <a th:href="@{/productos/listado}" class="btn btn-outline-secondary float-end">
+                            Cancelar
+                        </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script th:fragment="js"></script>
+    </body>
+</html>
