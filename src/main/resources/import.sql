@@ -6,4 +6,4 @@ INSERT INTO `pdv_db`.`productos` (`act`, `cod_bar`, `descripcion`, `url_img`, `p
 INSERT INTO `pdv_db`.`productos` (`act`, `cod_bar`, `descripcion`, `url_img`, `precio`, `stock`) VALUES (1, '3333333333333', 'Fideo a la pizza', 'https://www.abc.com.py/resizer/jGz8wA6CHt0q82G-WxVMPBOZbsc=/fit-in/770x495/smart/arc-anglerfish-arc2-prod-abccolor.s3.amazonaws.com/public/ZAG6WSHCTJC6DAWRHAAXSQRZJA.jpg', '1500', '30');
 INSERT INTO `pdv_db`.`productos` (`act`, `cod_bar`, `descripcion`, `url_img`, `precio`, `stock`) VALUES (1, '3333333333333', 'Vino Toro Tetra', 'https://superlorito.com.ar/wp-content/uploads/2020/04/TORO-TINTO-TETRA-768x768.jpg', '1500', '30');
 
-
+INSERT INTO `pdv_db`.`clientes` (`act`, `apellido`, `domicilio`, `email`, `nombre`, `nota`, `dni`, `telefono`) VALUES (1, 'ortiz', 'domicilio falso 123', 'juanortiz@email.com', 'juan', 'a', '3232323232', '3624636363');

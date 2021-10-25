@@ -17,7 +17,7 @@ and open the template in the editor.
         <div layout:fragment="contenido">
             <div class="container-fluid mt-4 px-4 mb-4">
                 <div class="card">
-                    <form th:action="@{/productos/guardar}" method="post" th:object="${producto}">
+                    <form th:action="@{/clientes/guardar}" method="post" th:object="${cliente}">
                         <div class="card-header">
                             <h4 th:text="${subtitulo}" ></h4>
                         </div>
@@ -25,40 +25,52 @@ and open the template in the editor.
                             <div class="row row-cols-1 mb-2">
                                 <div class="col col-sm-6">
                                     <div class="form">
-                                        <label for="cod_barra" class="form-label">Codigo Barra</label>
-                                        <input id="cod_barra" type="text" class="form-control" th:field="*{codigoBarras}" />
+                                        <label for="ape" class="form-label">Apellidos</label>
+                                        <input id="ape" type="text" class="form-control" th:field="*{apellido}" />
                                     </div>
                                     <div class="col col-sm-6">
                                         <div class="form">
-                                            <label for="des" class="form-label">Descripcion</label>
-                                            <input id="des" type="text" class="form-control" th:field="*{descripcion}"
+                                            <label for="nom" class="form-label">Descripcion</label>
+                                            <input id="nom" type="text" class="form-control" th:field="*{nombre}"
                                                    th:errorclass="'form-control alert-danger'" />
-                                            <small class="form-text text-danger" th:errors="*{descripcion}" 
-                                                   th:if="${#fields.hasErrors('descripcion')}"></small>
+                                            <small class="form-text text-danger" th:errors="*{nombre}" 
+                                                   th:if="${#fields.hasErrors('nombre')}"></small>
                                         </div>
                                     </div>
                                     <div class="col col-sm-6">
                                         <div class="form">
-                                            <label for="precio" class="form-label">Precio</label>
-                                            <input id="precio" type="text" class="form-control" th:field="*{precio}" 
+                                            <label for="dni" class="form-label">Nro Documento</label>
+                                            <input id="dni" type="text" class="form-control" th:field="*{nroDocumento}" 
                                                    th:errorclass="'form-control alert-danger'" />
-                                            <small class="form-text text-danger" th:errors="*{precio}" 
-                                                   th:if="${#fields.hasErrors('precio')}"></small>
+                                            <small class="form-text text-danger" th:errors="*{nroDocumento}" 
+                                                   th:if="${#fields.hasErrors('nroDocumento')}"></small>
                                         </div>
                                     </div>
                                     <div class="col col-sm-6">
                                         <div class="form">
-                                            <label for="stock" class="form-label">Stock</label>
-                                            <input id="stock" type="text" class="form-control" th:field="*{stock}" 
+                                            <label for="tel" class="form-label">Telefono</label>
+                                            <input id="tel" type="text" class="form-control" th:field="*{telefono}" 
                                                    th:errorclass="'form-control alert-danger'" />
-                                            <small class="form-text text-danger" th:errors="*{stock}" 
-                                                   th:if="${#fields.hasErrors('stock')}"></small>
+                                            <small class="form-text text-danger" th:errors="*{telefono}" 
+                                                   th:if="${#fields.hasErrors('telefono')}"></small>
                                         </div>
                                     </div>
                                     <div class="col col-sm-6">
                                         <div class="form">
-                                            <label for="linkimg" class="form-label">Imagen</label>
-                                            <input id="linkimg" type="url" class="form-control" th:field="*{linkImagen}" />
+                                            <label for="email" class="form-label">Correo Electronico</label>
+                                            <input id="email" type="email" class="form-control" th:field="*{email}" />
+                                        </div>
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form">
+                                            <label for="domicilio" class="form-label">Domicilio</label>
+                                            <input id="domicilio" type="text" class="form-control" th:field="*{domicilio}" />
+                                        </div>
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <div class="form">
+                                            <label for="nota" class="form-label">Nota</label>
+                                            <input id="nota" type="text" class="form-control" th:field="*{nota}" />
                                         </div>
                                     </div>
                                 </div>
@@ -68,7 +80,7 @@ and open the template in the editor.
                             <button type="submit" class="btn btn-outline-primary float-end ms-2">
                                 Guardar
                             </button>
-                            <a th:href="@{/productos/listado}" class="btn btn-outline-secondary float-end">
+                            <a th:href="@{/clientes/listado}" class="btn btn-outline-secondary float-end">
                                 Cancelar
                             </a>
                         </div>

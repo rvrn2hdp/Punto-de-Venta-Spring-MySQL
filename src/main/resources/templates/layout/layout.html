@@ -79,6 +79,26 @@ and open the template in the editor.
 
             </div>
         </nav>
+        
+        <!-- Mensajes -->
+        <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${success != null}">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
+             <i class="far fa-check-circle"></i>
+             &nbsp;
+            <span th:text="${success}"> bien</span>
+        </div>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" th:if="${warning != null}">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
+             <i class="fas fa-info-circle"></i>
+             &nbsp;
+            <span th:text="${warning}"> bien</span>
+        </div>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${danger != null}">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
+             <i class="fas fa-exclamation-triangle"></i>
+             &nbsp;
+            <span th:text="${danger}"> bien</span>
+        </div>
 
         <div layout:fragment="contenido">
             <p>Contenido principal de las páginas</p>
@@ -96,5 +116,15 @@ and open the template in the editor.
         <!-- Mis JS -->
         <script th:replace=":: js" ></script>
 
+        <script>
+            
+            setInterval("cerrar()", 5000);
+            
+            const cerrar = () => {
+                $(".alert").delay(500).slideUp(500, () => {
+                    $(this).hide();
+                });
+            };
+        </script>
     </body>
 </html>
