@@ -4,89 +4,115 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html lang="es"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      layout:decorate="~{layout/layout}">
-    <head>
-        <title th:text="#{titulo}">TODO supply a title</title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    </head>
-    <body>
-        <div layout:fragment="contenido" class="p-4">
-            <form id="form" th:action="@{/ventas/guardar}" th:object="${venta}" method="post">
-                <div class="card">
-                    <div class="card-header">
-                        <div th:text="#{ventas.form.titulo}"></div>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col col-3">
-                                <small class="card-text" th:text="#{ventas.form.fecha-hora}"></small>
-                                <br />
-                                <label th:field="*{fechaHora}" 
-                                       th:text="*{#temporals.format(fechaHora, 'dd-MM-yyyy HH:mm')}"></label>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/layout}">
+
+<head>
+    <title th:text="#{titulo}">TODO supply a title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <div layout:fragment="contenido" class="p-4">
+        <form id="form" th:action="@{/ventas/guardar}" th:object="${venta}" method="post">
+            <div class="card">
+                <div class="card-header">
+                    <div th:text="#{ventas.form.titulo}"></div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col col-3">
+                            <small class="card-text" th:text="#{ventas.form.fecha-hora}"></small>
+
+                            <br />
+                            <label th:field="*{fechaHora}" th:text="*{#temporals.format(fechaHora, 'dd/MM/yyyy HH:mm')}"></label>
+                        </div>
+                        <div class="col col-5">
+                            <div class="form-group">
+                                <small class="card-text" th:text="#{ventas.form.descripcion}"></small>
+                                <textArea class="form-control" rows="3"></textArea>
                             </div>
-                            <div class="col col-4">
+                        </div>
+                        <div class="col col-4">
+                            <div class="row">
                                 <div class="form-group">
-                                    <small class="card-text" th:text="#{ventas.form.descripcion}"></small>
-                                    <textArea class="form-control" rows="3"></textarea>
-                                </div>
-                            </div>
-                            <div class="col col-4">
-                                <div class="row">
-                                    <div class="form-group">
-                                        <small class="card-text" th:text="#{ventas.form.cliente}"></small>
-                                        <select class="form-control select2">
+                                    <small class="card-text" th:text="#{ventas.form.cliente}"></small>
+                                    <select class="form-control select2">
                                             <option th:each="c : ${clientes}" th:value="${c.id}" th:text="${c}"></option>
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="row float-end me-1 mt-2">
-                                    <div class="form-group">
-                                        <small class="card-text" th:text="#{ventas.form.total}" >Total: </small>
-                                        <h4 id="total" class="text-success">$0.00</h4>
-                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <hr />
-                        <div class="row">
-                            <div class="col col-12">
+                            <div class="row float-end me-1 mt-2">
                                 <div class="form-group">
-                                    <small class="card-text" th:text="#{ventas.form.buscar}"></small>
-                                    <input type="text" id="buscar_producto" name="buscar_producto" class="form-control" />
+                                    <small class="card-text text-info" th:text="#{ventas.form.total}"> </small>
+                                    <h4 id="total" class="text-success">$0.00</h4>
                                 </div>
                             </div>
                         </div>
-                        <div class="row mt-4">
-                            <div class="col col-14">
-                                <table class="table table-bordered table-hover table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Descripcion</th>
-                                            <th>Precio</th>
-                                            <th>Cantidad</th>
-                                            <th>Subtotal</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col col-12">
+                            <div class="form-group">
+                                <small class="card-text" th:text="#{ventas.form.buscar}"></small>
+                                <input type="text" id="buscar_producto" name="buscar_producto" class="form-control" />
                             </div>
                         </div>
-                        
                     </div>
-                    <div class="card-footer">
-                        <a onclick="$('#form').submit();" class="btn btn-primary btn-sm float-end">
-                            <span th:text="#{ventas.form.registrar}"></span>
-                        </a>
+
+
+                    <div class="row mt-4">
+                        <div class="col col-12">
+                            <!-- Tabla plantilla -->
+                            <table class="d-none">
+                                <tbody id="ventaItems">
+                                    <tr id="row_{ID}">
+                                        <td class="d-none">
+                                            <input type="hidden" value="{ID}" name="item_id[]" />
+                                        </td>
+                                        <td>
+                                            {DESCRIPCION}
+                                        </td>
+                                        <td>
+                                            {PRECIO}
+                                        </td>
+                                        <td>
+                                            <input type="number" value="1" min="1" name="cantidad[]" id="cantidad_{ID}" class="form-control" style="width: 110px;" onchange="lineasUtil.calcularSubtotal({ID},{PRECIO}, {CANTIDAD})" />
+                                        </td>
+                                        <td>
+                                            <span id="subtotal_{ID}">$0.00</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- tabla final -->
+                            <table id="tabla" class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th id="des">Descripción</th>
+                                        <th id="pre">Precio</th>
+                                        <th id="cant">Cantidad</th>
+                                        <th id="subt">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+
+                        </div>
                     </div>
                 </div>
-            </form>
-        </div>
+                <div class="card-footer">
+                    <a onclick="$('#form').submit();" class="btn btn-primary btn-sm float-end">
+                        <span th:text="#{ventas.form.registrar}"></span>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
 
-        <script th:fragment="js"></script>
-    </body>
+    <script th:fragment="js" th:src="@{/js/productos-autocomplete.js}"></script>
+</body>
+
 </html>
