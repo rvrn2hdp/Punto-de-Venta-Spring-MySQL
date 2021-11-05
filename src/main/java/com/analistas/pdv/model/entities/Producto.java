@@ -45,6 +45,7 @@ public class Producto {
     private boolean activo;
 
     public Producto() {
+        activo = true;
     }
 
     public Long getId() {

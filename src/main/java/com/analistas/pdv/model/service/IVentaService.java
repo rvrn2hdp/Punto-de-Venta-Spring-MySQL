@@ -5,15 +5,18 @@
  */
 package com.analistas.pdv.model.service;
 
-import com.analistas.pdv.model.entities.Cliente;
+import com.analistas.pdv.model.entities.Venta;
 import java.util.List;
 
 /**
  *
- * @author pcc
+ * @author ander
  */
-public interface IClienteService {
+public interface IVentaService {
     
-    public List<Cliente> buscarTodos();
+    public List<Venta> listarTodo();
     
+    public Venta buscarPorId(Long id);
+    
+    public void guardar(Venta venta);
 }

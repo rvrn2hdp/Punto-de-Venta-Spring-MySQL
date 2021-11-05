@@ -33,7 +33,9 @@ public class LineaVenta {
     
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_articulo")
-    private Producto producto;
+    private Producto producto;  //Se podría añadir como atributo
+                                //el precio del producto en momento
+                                //de la venta.
 
     public Long getId() {
         return id;

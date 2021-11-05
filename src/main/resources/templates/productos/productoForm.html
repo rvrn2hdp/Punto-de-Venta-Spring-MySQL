@@ -25,8 +25,8 @@ and open the template in the editor.
                             <div class="row row-cols-1 mb-2">
                                 <div class="col col-sm-6">
                                     <div class="form">
-                                        <label for="cod_barra" class="form-label">Codigo Barra</label>
-                                        <input id="cod_barra" type="text" class="form-control" th:field="*{codigoBarras}" />
+                                        <label for="cod_barra" class="form-label">Código Barras</label>
+                                        <input id="cod_barra" maxlength="13" data-mask="#0" data-mask-reverse="true" type="text" class="form-control" th:field="*{codigoBarras}" />
                                     </div>
                                     <div class="col col-sm-6">
                                         <div class="form">
@@ -34,25 +34,27 @@ and open the template in the editor.
                                             <input id="des" type="text" class="form-control" th:field="*{descripcion}"
                                                    th:errorclass="'form-control alert-danger'" />
                                             <small class="form-text text-danger" th:errors="*{descripcion}" 
-                                                   th:if="${#fields.hasErrors('descripcion')}"></small>
+                                                   th:if="${#fields.hasErrors('descripcion')}" ></small>
                                         </div>
                                     </div>
                                     <div class="col col-sm-6">
                                         <div class="form">
                                             <label for="precio" class="form-label">Precio</label>
-                                            <input id="precio" type="text" class="form-control" th:field="*{precio}" 
+                                            <input id="precio" type="text" class="form-control" th:field="*{precio}"
+                                                   data-mask="#.##0,00" data-mask-reverse="true"
                                                    th:errorclass="'form-control alert-danger'" />
                                             <small class="form-text text-danger" th:errors="*{precio}" 
-                                                   th:if="${#fields.hasErrors('precio')}"></small>
+                                                   th:if="${#fields.hasErrors('precio')}" ></small>
                                         </div>
                                     </div>
                                     <div class="col col-sm-6">
                                         <div class="form">
                                             <label for="stock" class="form-label">Stock</label>
-                                            <input id="stock" type="text" class="form-control" th:field="*{stock}" 
+                                            <input id="stock" type="text" class="form-control" th:field="*{stock}"
+                                                   data-mask="#0" data-mask-reverse="true"
                                                    th:errorclass="'form-control alert-danger'" />
-                                            <small class="form-text text-danger" th:errors="*{stock}" 
-                                                   th:if="${#fields.hasErrors('stock')}"></small>
+                                             <small class="form-text text-danger" th:errors="*{stock}" 
+                                                   th:if="${#fields.hasErrors('stock')}" ></small>
                                         </div>
                                     </div>
                                     <div class="col col-sm-6">
@@ -65,12 +67,12 @@ and open the template in the editor.
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-outline-primary float-end ms-2">
-                                Guardar
-                            </button>
-                            <a th:href="@{/productos/listado}" class="btn btn-outline-secondary float-end">
-                                Cancelar
-                            </a>
+                        <button type="submit" class="btn btn-outline-primary float-end ms-2">
+                            Guardar
+                        </button>
+                        <a th:href="@{/productos/listado}" class="btn btn-outline-secondary float-end">
+                            Cancelar
+                        </a>
                         </div>
                     </form>
                 </div>

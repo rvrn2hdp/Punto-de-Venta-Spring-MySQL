@@ -1,5 +1,5 @@
 
-$(document).ready(() => {
+$(document).ready(function () {
     $("#buscar_producto").autocomplete({
         source: function (request, response) {
             $.ajax({
@@ -13,53 +13,57 @@ $(document).ready(() => {
                         return {
                             value: item.id,
                             label: `${item.descripcion} - $${item.precio}` //item.descripcion + " - $" + item.precio 
-                        };
+                        }
                     }));
                 }
             });
         },
-
         select: function (event, ui) {
 
-
-            //crear una linea para la tabla de linea de ventas... 
+            //Crear una linea para la tabla de linea de ventas...
             let linea = $("#ventaItems").html();
 
-            //decontruir la cadena:
+            //Decostruir la cadena:
             let producto = ui.item.label;
             let descripcion = producto.split('-')[0];
             let precio = producto.split('-')[1];
             precio = precio.split('$')[1];
             let id = ui.item.value;
 
-            console.log('Producto seleccionado:  $(producto)');
+            console.log(`Producto seleccionado: ${producto}`);
+
+            //Verficar si el producto es repetido:
+            if (lineasUtil.esRepetido(id)) {
+                lineasUtil.incrementarCantidad(id, precio);
+                return false;
+            }
 
             linea = linea.replace(/{ID}/g, id);
             linea = linea.replace(/{DESCRIPCION}/g, descripcion);
             linea = linea.replace(/{PRECIO}/g, precio);
 
-            $("#tabla tbody").append(linea);
+            $("#tabla tbody").prepend(linea);
 
             lineasUtil.calcularSubtotal(id, precio, 1);
 
-            return false;
+
         }
     });
 });
 
+//Clase de utilidades
 const lineasUtil = {
 
-    incrementarCantidad: (id) => {
+    incrementarCantidad: function(id, precio) {
         let cantidad = parseInt($(`#cantidad_${id}`).val());
-        $(`#cantidad_${id}`).val(cantidad++);
-        this.calcularSubtotal(id, );
-    },
-
-    calcularSubtotal: (id, precio, cantidad) => {
+        $(`#cantidad_${id}`).val(++cantidad);
+        this.calcularSubtotal(id, precio, cantidad);
+    }, 
+    calcularSubtotal: function(id, precio, cantidad) {
         $(`#subtotal_${id}`).html((parseFloat(precio) * parseInt(cantidad)).toFixed(2));
+        this.calcularTotal();
     },
-
-    esRepetido: (id) => {
+    esRepetido: function (id) {
         let resultado = false;
         $('input[name="item_id[]"]').each(function () {
             if (parseInt(id) === parseInt($(this).val())) {
@@ -67,15 +71,16 @@ const lineasUtil = {
             }
         });
         return resultado;
-    },
-
+    }, 
     calcularTotal: function () {
         let total = 0;
-        $(`span[id^="total`).each(
-                function () {
-                    total += parseFloat($(this).html());
-                }
-        );
+        $(`span[id^="subtotal_"]`).each(function() {
+            total += parseFloat($(this).html());
+        });
         $("#total").html("$" + parseFloat(total).toFixed(2));
+    },
+    eliminarLinea: function (id) {
+        $(`#row_${id}`).remove();
+        this.calcularTotal();
     }
 };

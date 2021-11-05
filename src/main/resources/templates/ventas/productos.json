@@ -1,0 +1,59 @@
+[
+    {
+        "id": 1,
+        "codigoBarras": "1111111111111",
+        "descripcion": "Arroz Patito 1kg",
+        "precio": 110.00,
+        "stock": 25,
+        "linkImagen": "https://estoyhechouncocinillas.com/wp-content/uploads/2020/05/arroz-con-pato.jpg",
+        "activo": true
+    }, {
+        "id": 2,
+        "codigoBarras": "2222222222222",
+        "descripcion": "Yerba Mate Venosa 1kg",
+        "precio": 700.00,
+        "stock": 10,
+        "linkImagen": "https://news.agrofystatic.com/yerba_mate_impuestos.jpg?d=620x375",
+        "activo": true
+    }, {
+        "id": 3,
+        "codigoBarras": "3333333333333",
+        "descripcion": "Fernet Branca",
+        "precio": 1500.00,
+        "stock": 30,
+        "linkImagen": "https://http2.mlstatic.com/D_NQ_NP_617672-MLA44742406595_012021-O.jpg",
+        "activo": true
+    }, {
+        "id": 4,
+        "codigoBarras": "3333333333333",
+        "descripcion": "Cerveza Paragonia IPA",
+        "precio": 1500.00,
+        "stock": 30,
+        "linkImagen": "https://walmartar.vteximg.com.br/arquivos/ids/882698-292-292/Cerveza-Ipa-24-7-Lata-Pack-6-Un-Patagonia-473cc-1-65976.jpg?v=637419144298970000",
+        "activo": true
+    }, {
+        "id": 5,
+        "codigoBarras": "3333333333333",
+        "descripcion": "Polenta Albertito",
+        "precio": 1500.00,
+        "stock": 30,
+        "linkImagen": "https://images.clarin.com/2021/08/09/una-polenta-bien-cremosa-es___r9Zhdr_9W_1256x620__3.jpg",
+        "activo": true
+    }, {
+        "id": 6,
+        "codigoBarras": "3333333333333",
+        "descripcion": "Fideo a la pizza",
+        "precio": 1500.00,
+        "stock": 30,
+        "linkImagen": "https://www.abc.com.py/resizer/jGz8wA6CHt0q82G-WxVMPBOZbsc=/fit-in/770x495/smart/arc-anglerfish-arc2-prod-abccolor.s3.amazonaws.com/public/ZAG6WSHCTJC6DAWRHAAXSQRZJA.jpg",
+        "activo": true
+    }, {
+        "id": 7,
+        "codigoBarras": "3333333333333",
+        "descripcion": "Vino Toro Tetra",
+        "precio": 1500.00,
+        "stock": 30,
+        "linkImagen": "https://superlorito.com.ar/wp-content/uploads/2020/04/TORO-TINTO-TETRA-768x768.jpg",
+        "activo": true
+    }
+]

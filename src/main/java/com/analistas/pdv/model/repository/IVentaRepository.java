@@ -5,13 +5,13 @@
  */
 package com.analistas.pdv.model.repository;
 
-import com.analistas.pdv.model.entities.Cliente;
+import com.analistas.pdv.model.entities.Venta;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author ander
  */
-public interface IClienteRepository extends JpaRepository<Cliente, Long> {
+public interface IVentaRepository extends JpaRepository<Venta, Long>{
     
 }

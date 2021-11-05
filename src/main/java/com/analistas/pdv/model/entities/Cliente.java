@@ -129,7 +129,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return nombre + ", " + apellido + " - D.N.I: " + nroDocumento;
+        return nombre + " " + apellido +  " - D.N.I: " + nroDocumento;
     }
     
     
